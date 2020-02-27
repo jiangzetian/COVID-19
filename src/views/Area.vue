@@ -28,13 +28,6 @@
                         </div>
                     </van-col>
                 </van-row>
-                <div v-for="man in area_man">
-                    <p class="text" v-if="v.area == man[0]">{{v.area}}人口:{{man[1]}}人</p>
-                    <p class="text confirm" v-if="v.area == man[0]">{{v.area}}确诊率:{{((v.confirm/man[1])*100).toFixed(10)+'%'}}</p>
-                    <p class="text suspect" v-if="v.area == man[0]">{{v.area}}疑似率:{{((v.suspect/man[1])*100).toFixed(10)+'%'}}</p>
-                    <p class="text heal" v-if="v.area == man[0]">{{v.area}}治愈率:{{((v.heal/man[1])*100).toFixed(10)+'%'}}</p>
-                    <p class="text dead" v-if="v.area == man[0]">{{v.area}}死亡率:{{((v.dead/man[1])*100).toFixed(10)+'%'}}</p>
-                </div>
             </van-tab>
         </van-tabs>
         <div id="chart1" class="chart"></div>
@@ -44,48 +37,11 @@
 </template>
 
 <script>
-    // import {cityData} from '@/api/api';
     export default {
         name: "Area",
         data(){
             return {
                 map_data:{},
-                area_man:[
-                    ['广东',111690000],
-                    ['山东',100058300],
-                    ['河南',95591300],
-                    ['四川',83020000],
-                    ['江苏',80293000],
-                    ['河北',75195200],
-                    ['湖南',68602000],
-                    ['安徽',62548000],
-                    ['湖北',59020000],
-                    ['浙江',56570000],
-                    ['广西',48850000],
-                    ['云南',48005000],
-                    ['江西',46221000],
-                    ['辽宁',46221000],
-                    ['福建',39110000],
-                    ['陕西',38354400],
-                    ['黑龙江',37887000],
-                    ['山西',37023500],
-                    ['贵州',35800000],
-                    ['重庆',30484300],
-                    ['吉林',27174300],
-                    ['甘肃',26257100],
-                    ['内蒙古',25286000],
-                    ['新疆',24446700],
-                    ['上海',24183300],
-                    ['台湾',23690000],
-                    ['北京',21707000],
-                    ['天津',15568700],
-                    ['海南',9257600],
-                    ['香港',7430000],
-                    ['宁夏',6817900],
-                    ['青海',5983800],
-                    ['西藏',3371500],
-                    ['澳门',632000],
-                ]
             }
         },
         methods: {
@@ -158,14 +114,14 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: '人数'
+                            text: ''
                         }
                     },
                     credits:{
                         enabled: false // 禁用版权信息
                     },
                     series: [{
-                        name: '人数',
+                        name: '确诊人数',
                         data: area_data_confirm,
                     }],
                     colors: ['#D81D1B']
@@ -193,14 +149,14 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: '人数'
+                            text: ''
                         }
                     },
                     credits:{
                         enabled: false // 禁用版权信息
                     },
                     series: [{
-                        name: '人数',
+                        name: '治愈人数',
                         data: area_data_heal,
                     }],
                     colors: ['#178B50']
@@ -228,14 +184,14 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: '人数'
+                            text: ''
                         }
                     },
                     credits:{
                         enabled: false // 禁用版权信息
                     },
                     series: [{
-                        name: '人数',
+                        name: '死亡人数',
                         data: area_data_dead,
                     }],
                     colors:['#2d2f33']

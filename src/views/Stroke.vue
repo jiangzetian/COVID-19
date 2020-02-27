@@ -1,6 +1,7 @@
 <template>
     <div id="stroke">
-        <van-tabs swipeable>
+        <van-loading size="24px" vertical v-if="stroke_data == ''">加载中...</van-loading>
+        <van-tabs swipeable v-if="stroke_data !== ''">
             <van-tab v-for="(v,i) in types" :key="i" :title="v">
                 <a class="box" v-for="vv in stroke_data" v-if="vv.t_type == i" :href="vv.source">
                     <van-row>
@@ -35,7 +36,7 @@
         name: "Stroke",
         data(){
             return{
-                stroke_data:{},
+                stroke_data:'',
                 types:{
                     1:'飞机',
                     2:'火车',
@@ -70,7 +71,7 @@
                 var m = this.addZero(time.getMinutes()) + ':';
                 var  s = this.addZero(time.getSeconds());
                 return Y + M + D + h+m+s;
-            }
+            },
         },
         created() {
             this.getData();

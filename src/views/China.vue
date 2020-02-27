@@ -51,11 +51,22 @@
             getData() {
                 this.$jsonp('https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5').then((res) => {
                     let data = JSON.parse(res.data);
+                    // console.log(data);
+
+                    //顶部显示疫情数字
                     this.head_data= data.chinaTotal;
-                    this.chart_data=data.chinaDayList;
+                    //地图
                     this.map_data=this.mapAreaData(data.areaTree[0].children);
-                    this.setChart(this.chart_data);
                     this.setMap(this.map_data);
+                }).catch((error) => {
+                    console.log(error)
+                });
+                this.$jsonp('https://view.inews.qq.com/g2/getOnsInfo?name=disease_other').then((res) => {
+                    let data = JSON.parse(res.data);
+                    // console.log(data);
+                    //曲线图
+                    this.chart_data=data.chinaDayList;
+                    this.setChart(this.chart_data);
                 }).catch((error) => {
                     console.log(error)
                 });
@@ -88,15 +99,15 @@
                             to: 0
                         }, {
                             from: 0,
-                            to: 9
-                        }, {
-                            from:9,
                             to: 100
                         }, {
-                            from: 100,
+                            from:100,
                             to: 1000
                         }, {
-                            from: 1000
+                            from: 1000,
+                            to: 10000
+                        }, {
+                            from: 10000
                         }]
                     },
                     series: [{
@@ -136,7 +147,7 @@
                     },
                     yAxis: {
                         title: {
-                            text: '人数'
+                            text: ''
                         },
                         crosshair:{
 
