@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.4.4",
-    "highcharts": "^8.0.0",
+    "highcharts": "^8.1.1",
     "vant": "^2.4.4",
     "vue": "^2.6.10",
     "vue-jsonp": "^0.1.8",
