@@ -2,5 +2,4 @@
 
 线上地址：
 
-http://api.tianxiaotian.xyz/es_show/#/
-
+http://api.tianxiaotian.xyz/COVID-19/#/
